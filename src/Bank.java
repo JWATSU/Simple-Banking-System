@@ -184,7 +184,7 @@ public class Bank
              PreparedStatement pstmt = conn.prepareStatement(sql))
         {
             pstmt.setString(1, card.getCardNumber());
-            ResultSet rs = pstmt.executeQuery(sql);
+            ResultSet rs = pstmt.executeQuery();
             balance = rs.getInt("balance");
         }
         catch (SQLException e)
@@ -211,6 +211,7 @@ public class Bank
         }
     }
 
+    // Should probably be using transactions here
     public void transferMoney()
     {
         System.out.println("Enter receiver card number:");
